@@ -15,7 +15,7 @@ Expected graduation: **August 2027**
 
 | | Research area | Focus |
 | :--- | :--- | :--- |
-| 01 | **Computer systems & architectures for AI** | Learning over time |
+| 01 | **Computer systems & architectures for AI** | GPU-efficient architecture |
 | 02 | **LLM Serving Systems** | Serving infrastructure |
 | 03 | **On-device AI** | AI on local devices |
 | 04 | **Continuous Learning on Edge Devices** | Learning over time |
