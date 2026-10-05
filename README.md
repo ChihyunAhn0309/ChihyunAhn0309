@@ -5,7 +5,7 @@
   <img src="assets/header-light.svg" width="100%" alt="Chihyun An — KAIST / AI Systems. Honors: KAIST Dean's List - 2026 Spring, 4.27/4.30 GPA with 16 credits; Departmental Honors Scholarship - 2026 Spring, top 4 students in the School of Computing.">
 </picture>
 
-**AI systems researcher preparing for graduate study.**  
+**AI systems researcher.**  
 KAIST · School of Computing · Electrical Engineering double major  
 Expected graduation: **August 2027**
 
@@ -15,9 +15,10 @@ Expected graduation: **August 2027**
 
 | | Research area | Focus |
 | :--- | :--- | :--- |
-| 01 | **LLM Serving Systems** | Serving infrastructure |
-| 02 | **On-device AI** | AI on local devices |
-| 03 | **Continuous Learning on Edge Devices** | Learning over time |
+| 01 | **Computer systems & architectures for AI** | Learning over time |
+| 02 | **LLM Serving Systems** | Serving infrastructure |
+| 03 | **On-device AI** | AI on local devices |
+| 04 | **Continuous Learning on Edge Devices** | Learning over time |
 
 <details>
 <summary>Broader interests</summary>
