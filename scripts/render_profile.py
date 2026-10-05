@@ -9,10 +9,10 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 PALETTES = {
-    'light': {'bg': '#f0ece6', 'ink': '#343a42', 'accent': '#7f553e',
-              'rule': '#d5c7b7', 'top': '#b9977e', 'detail': '#746754', 'frame': '#c4b29d'},
-    'dark': {'bg': '#25231f', 'ink': '#efebe7', 'accent': '#d4ad8f',
-             'rule': '#554737', 'top': '#876d5b', 'detail': '#bba994', 'frame': '#6a5947'},
+    'light': {'ink': '#1f2328', 'accent': '#59636e',
+              'rule': '#d1d9e0', 'detail': '#59636e', 'frame': '#d1d9e0'},
+    'dark': {'ink': '#f0f6fc', 'accent': '#9198a1',
+             'rule': '#3d444d', 'detail': '#9198a1', 'frame': '#3d444d'},
 }
 
 def text(x, y, value, size, color, *, family='Arial, Helvetica, sans-serif', weight='400', spacing=None):
@@ -42,9 +42,7 @@ def render(profile, palette, portrait, mobile):
     width, height = (560, 556) if mobile else (1000, 410)
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title description">',
              f'<title id="title">{html.escape(profile["name"])} — AI Systems</title>',
-             '<desc id="description">Portrait with Dean’s List and Departmental Honors Scholarship honors for Spring 2026.</desc>',
-             f'<rect width="{width}" height="{height}" fill="{p["bg"]}"/>',
-             f'<rect width="{width}" height="4" fill="{p["top"]}"/>']
+             '<desc id="description">Portrait with Dean’s List and Departmental Honors Scholarship honors for Spring 2026.</desc>']
     if mobile:
         px, py, pw, ph, name_x = 34, 34, 136, 181.333, 197
         honors_x, honors_y, award_y, rule_y, second_y = 36, 273, 310, 389, 417
@@ -56,7 +54,7 @@ def render(profile, palette, portrait, mobile):
         heading_size, detail_size = 20, 16
         eyebrow_size, title_size = 13, 67
     parts.extend([
-        f'<rect x="{px}" y="{py}" width="{pw}" height="{ph}" fill="{p["bg"]}" stroke="{p["frame"]}"/>',
+        f'<rect x="{px}" y="{py}" width="{pw}" height="{ph}" fill="none" stroke="{p["frame"]}"/>',
         f'<image x="{px+8}" y="{py+8}" width="{pw-16}" height="{ph-16}" preserveAspectRatio="xMidYMid slice" href="{portrait}"/>',
         text(name_x, 74 if mobile else 70, profile['eyebrow'], eyebrow_size, p['accent'], family='Consolas, monospace', spacing='1.8'),
     ])
