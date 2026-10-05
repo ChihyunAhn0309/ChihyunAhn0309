@@ -1,0 +1,16 @@
+{
+  "name": "Chihyun An",
+  "eyebrow": "KAIST / AI SYSTEMS",
+  "photo": "assets/portrait.png",
+  "honors_term": "HONORS · SPRING 2026",
+  "awards": [
+    {
+      "name": "Dean’s List",
+      "detail": "4.27 / 4.30 GPA · 16 credits"
+    },
+    {
+      "name": "Departmental Honors Scholarship",
+      "detail": "Top 4 students · School of Computing"
+    }
+  ]
+}

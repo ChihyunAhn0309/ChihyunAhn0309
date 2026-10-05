@@ -1,0 +1,42 @@
+name: Update profile banner
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/portrait.png'
+      - 'profile.json'
+      - 'scripts/render_profile.py'
+      - '.github/workflows/update-profile.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-banner-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the current profile
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+      - name: Build light and dark banners
+        run: python3 scripts/render_profile.py
+      - name: Publish updated banners
+        shell: bash
+        run: |
+          git add assets/header-*.svg
+          if git diff --cached --quiet; then
+            echo "Profile banners are already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update profile banner"
+          git push origin HEAD:main
