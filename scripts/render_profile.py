@@ -71,7 +71,7 @@ def render(profile, palette, portrait, mobile):
         y = award_y if index == 0 else second_y
         parts.append(medal(honors_x, y-2, p['accent']))
         tx = honors_x + 36
-        title_lines = ['Departmental Honors', 'Scholarship'] if mobile and award['name'] == 'Departmental Honors Scholarship' else [award['name']]
+        title_lines = ['Departmental Honors', 'Scholarship - 2026 Spring'] if mobile and award['name'] == 'Departmental Honors Scholarship - 2026 Spring' else [award['name']]
         for offset, line in enumerate(title_lines):
             parts.append(text(tx, y+16+offset*28, line, heading_size, p['ink'], weight='600'))
         parts.append(text(tx, y+43+(len(title_lines)-1)*28, award['detail'], detail_size, p['detail']))

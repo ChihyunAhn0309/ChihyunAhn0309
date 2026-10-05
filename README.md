@@ -2,7 +2,7 @@
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/header-dark-mobile.svg">
   <source media="(max-width: 600px)" srcset="assets/header-light-mobile.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
-  <img src="assets/header-light.svg" width="100%" alt="Chihyun An — KAIST / AI Systems. Honors, Spring 2026: Dean’s List, 4.27/4.30 GPA with 16 credits; Departmental Honors Scholarship, top 4 students in the School of Computing.">
+  <img src="assets/header-light.svg" width="100%" alt="Chihyun An — KAIST / AI Systems. Honors: KAIST Dean's List - 2026 Spring, 4.27/4.30 GPA with 16 credits; Departmental Honors Scholarship - 2026 Spring, top 4 students in the School of Computing.">
 </picture>
 
 **AI systems researcher preparing for graduate study.**  
