@@ -92,7 +92,7 @@ def main():
     for theme, palette in PALETTES.items():
         for mobile in (False, True):
             suffix = '-mobile' if mobile else ''
-            target = ROOT / 'assets' / f'header-{theme}{suffix}.svg'
+            target = ROOT / 'assets' / f'header-honors-{theme}{suffix}.svg'
             target.write_text(render(profile, palette, portrait, mobile), encoding='utf-8')
             print(target.relative_to(ROOT))
 
