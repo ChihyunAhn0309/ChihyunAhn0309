@@ -72,7 +72,8 @@ def render(profile, palette, portrait, mobile):
         title_lines = ['Departmental Honors', 'Scholarship - 2026 Spring'] if mobile and award['name'] == 'Departmental Honors Scholarship - 2026 Spring' else [award['name']]
         for offset, line in enumerate(title_lines):
             parts.append(text(tx, y+16+offset*28, line, heading_size, p['ink'], weight='600'))
-        parts.append(text(tx, y+43+(len(title_lines)-1)*28, award['detail'], detail_size, p['detail']))
+        if award.get('detail'):
+            parts.append(text(tx, y+43+(len(title_lines)-1)*28, award['detail'], detail_size, p['detail']))
         if index == 0:
             parts.append(f'<path d="M{honors_x} {rule_y}H{width-36}" stroke="{p["rule"]}"/>')
     parts.append('</svg>')
