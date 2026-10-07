@@ -10,9 +10,9 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 PALETTES = {
     'light': {'ink': '#1f2328', 'accent': '#59636e',
-              'rule': '#d1d9e0', 'detail': '#59636e', 'frame': '#d1d9e0'},
+              'rule': '#d1d9e0', 'detail': '#59636e', 'frame': '#d1d9e0', 'subtitle': '#245575'},
     'dark': {'ink': '#f0f6fc', 'accent': '#9198a1',
-             'rule': '#3d444d', 'detail': '#9198a1', 'frame': '#3d444d'},
+             'rule': '#3d444d', 'detail': '#9198a1', 'frame': '#3d444d', 'subtitle': '#93bacf'},
 }
 
 def text(x, y, value, size, color, *, family='Arial, Helvetica, sans-serif', weight='400', spacing=None):
@@ -24,6 +24,12 @@ def medal(x, y, color):
     return (f'<g transform="translate({x} {y})" fill="none" stroke="{color}" '
             'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'
             '<circle cx="11" cy="8" r="6"/><path d="M7 13L5 24l6-4 6 4-2-11"/></g>')
+
+def title_badge(x, y, color):
+    return (f'<g transform="translate({x} {y})" fill="none" stroke="{color}" '
+            'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'
+            '<path d="M10 1l3 2 3 .5.5 3 2 3-2 3-.5 3-3 .5-3 2-3-2-3-.5-.5-3-2-3 2-3 .5-3 3-.5Z"/>'
+            '<path d="m6.5 9.5 2.5 2.5 4.5-5"/></g>')
 
 def image_uri(path):
     content = path.read_bytes()
@@ -39,18 +45,18 @@ def image_uri(path):
 
 def render(profile, palette, portrait, mobile):
     p = palette
-    width, height = (560, 556) if mobile else (1000, 410)
+    width, height = (560, 588) if mobile else (1000, 440)
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title description">',
              f'<title id="title">{html.escape(profile["name"])} — AI Systems</title>',
-             '<desc id="description">Portrait with Dean’s List and Departmental Honors Scholarship honors for Spring 2026.</desc>']
+             f'<desc id="description">{html.escape(profile.get("subtitle", ""))}. Portrait with Dean’s List and Departmental Honors Scholarship honors for Spring 2026.</desc>']
     if mobile:
         px, py, pw, ph, name_x = 34, 34, 136, 181.333, 197
-        honors_x, honors_y, award_y, rule_y, second_y = 36, 273, 310, 389, 417
+        honors_x, honors_y, award_y, rule_y, second_y = 36, 305, 342, 421, 449
         heading_size, detail_size = 23, 19
         eyebrow_size, title_size = 15, 55
     else:
         px, py, pw, ph, name_x = 38, 59, 222, 296, 302
-        honors_x, honors_y, award_y, rule_y, second_y = name_x, 190, 221, 282, 304
+        honors_x, honors_y, award_y, rule_y, second_y = name_x, 220, 251, 312, 334
         heading_size, detail_size = 20, 16
         eyebrow_size, title_size = 13, 67
     parts.extend([
@@ -64,6 +70,12 @@ def render(profile, palette, portrait, mobile):
             parts.append(text(name_x, 137+index*62, piece, title_size, p['ink'], family='Georgia, Times New Roman, serif'))
     else:
         parts.append(text(name_x, 145, profile['name'], title_size, p['ink'], family='Georgia, Times New Roman, serif'))
+    if profile.get('subtitle'):
+        parts.append(title_badge(name_x, 219 if mobile else 163, p['subtitle']))
+        subtitle_lines = profile['subtitle'].rsplit(' ', 1) if mobile else [profile['subtitle']]
+        for index, line in enumerate(subtitle_lines):
+            parts.append(text(name_x+29, (234 if mobile else 178)+index*24, line,
+                              18, p['subtitle'], weight='500'))
     parts.append(text(honors_x, honors_y, profile['honors_term'], 14 if mobile else 12, p['accent'], family='Consolas, monospace', spacing='1.5'))
     for index, award in enumerate(profile['awards']):
         y = award_y if index == 0 else second_y
@@ -92,7 +104,7 @@ def main():
     for theme, palette in PALETTES.items():
         for mobile in (False, True):
             suffix = '-mobile' if mobile else ''
-            target = ROOT / 'assets' / f'header-honors-{theme}{suffix}.svg'
+            target = ROOT / 'assets' / f'header-ipesk-{theme}{suffix}.svg'
             target.write_text(render(profile, palette, portrait, mobile), encoding='utf-8')
             print(target.relative_to(ROOT))
 

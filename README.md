@@ -1,8 +1,8 @@
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/header-honors-dark-mobile.svg">
-  <source media="(max-width: 600px)" srcset="assets/header-honors-light-mobile.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-honors-dark.svg">
-  <img src="assets/header-honors-light.svg" width="100%" alt="Chihyun An — KAIST / AI Systems. Honors: KAIST Dean's List - 2026 Spring; Departmental Honors Scholarship - 2026 Spring, top 4 students in the School of Computing.">
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/header-ipesk-dark-mobile.svg">
+  <source media="(max-width: 600px)" srcset="assets/header-ipesk-light-mobile.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/header-ipesk-dark.svg">
+  <img src="assets/header-ipesk-light.svg" width="100%" alt="Chihyun An — KAIST / AI Systems. IPESK Next-Generation Engineer. Honors: KAIST Dean's List - 2026 Spring; Departmental Honors Scholarship - 2026 Spring, top 4 students in the School of Computing.">
 </picture>
 
 **AI systems researcher.**  
